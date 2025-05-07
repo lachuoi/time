@@ -1,0 +1,19 @@
+spin_manifest_version = 2
+
+[application]
+name = "time"
+version = "0.0.1"
+authors = ["Seungjin Kim <seungjin@duck.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "time"
+
+[component.root]
+source = "target/wasm32-wasip1/release/root.wasm"
+allowed_outbound_hosts = []
+
+[component.root.build]
+command = "cargo build --target wasm32-wasip1 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
